@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
+import os
 import telebot
 from telebot import types
 
-token = '5047777111:AAET1X2ea99mCsx8QpKAc5bbfmRz2pxuw3g'
+token = os.getenv("TELEGRAM_TOKEN")
 
 bot = telebot.TeleBot(token)
 
