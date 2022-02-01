@@ -3,7 +3,7 @@ import os
 import telebot
 from telebot import types
 
-token = os.environ["TELEGRAM_TOKEN"]
+token = os.getenv["TELEGRAM_TOKEN"]
 
 bot = telebot.TeleBot(token)
 
