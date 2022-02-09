@@ -21,11 +21,11 @@ def start(m):
         'Ожог',
         'Ушная боль',
         'Зубная боль',
-        'Температура',
         'Запор',
         'Диарея/Рвота',
         'Сон',
         'Падение',
+        'Прикорм'
         'Онлайн консультация',
     ]])
     bot.send_message(m.chat.id, 'Выберите жалобу:', reply_markup=keyboard)
@@ -101,7 +101,6 @@ def message(message):
 
     Для выбора другой жалобы, нажмите /start.''')
     elif message.text == 'Правильное прикладывание':
-        tg_analytic.statistics(message.chat.id, message.text)
         bot.send_message(message.chat.id, '''
 Признаки правильного прикладывания к груди:
 1️⃣ Мама не испытывает неприятных ощущений в области соска и ареолы (даже в первые минуты кормления);⠀
@@ -218,7 +217,7 @@ def message(message):
         bot.send_message(message.chat.id, '''Тут текст про сон''')
     elif message.text == 'Падение':
         bot.send_message(message.chat.id, '''Про падение''')
-    elif message.text == 'Начало прикорма':
+    elif message.text == 'Прикорм':
         bot.send_message(message.chat.id, '''Про прикорм''')
     elif message.text == 'Онлайн консультация':
         bot.send_message(message.chat.id, '''
