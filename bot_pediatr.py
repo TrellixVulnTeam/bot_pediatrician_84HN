@@ -41,7 +41,7 @@ def message(message):
             'Кашель',
             'Температура'
         ]])
-        bot.send_message(message.chat.id, 'Выберите кнопку', reply_markup=keyboardgostart)
+        bot.send_message(message.chat.id, 'Выберите жалобу ниже или вернитесь на главное меню (/start)', reply_markup=keyboardgostart)
     elif message.text == 'Сопли':
         bot.send_message(message.chat.id, '''
 🍀 обеспечте прохладный23°, влажный 60% воздух в комнате где находится малыш.
@@ -92,7 +92,7 @@ def message(message):
             'Завершение ГВ',
             'Прибавки',
         ]])
-        bot.send_message(message.chat.id, 'Выберите кнопку', reply_markup=keyboardgostart)
+        bot.send_message(message.chat.id, 'Выберите жалобу ниже или вернитесь на главное меню (/start)', reply_markup=keyboardgostart)
     elif message.text == 'Мало молока':
         bot.send_message(message.chat.id, '''
 Алгоритм действий в ситуации мало молока:
