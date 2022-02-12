@@ -1,22 +1,15 @@
 # -*- coding: utf-8 -*-
 import os
 import telebot
-import tg_analytic
-
 from telebot import types
 
 token = os.getenv("TELEGRAM_TOKEN")
 
 bot = telebot.TeleBot(token)
 
-user_markup = types.ReplyKeyboardMarkup(True)
-user_markup.row('команда а', 'команда б')
-user_markup.row('команда в')
-
 
 @bot.message_handler(commands=["start"])
 def start(m):
-    tg_analytic.statistics(message.chat.id, message.text)
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
     keyboard.add(*[types.KeyboardButton(name) for name in [
         'ОРВИ/ОРЗ🤧',
@@ -40,7 +33,6 @@ def start(m):
 
 @bot.message_handler(content_types=['text'])
 def message(message):
-    tg_analytic.statistics(message.chat.id, message.text)
     if message.text == 'ОРВИ/ОРЗ🤧':
         keyboardgostart = types.ReplyKeyboardMarkup(resize_keyboard=True)
         keyboardgostart.add(*[types.KeyboardButton(name) for name in [
@@ -455,33 +447,6 @@ def message(message):
 💙Когда и чем болел
 💜Антибиотики были ли? когда ?гормоны и другие сильнодействующие препараты ?
 💛Какой у вас запрос на консультацию?''')
-
-
-@bot.message_handler(content_types=['text'])
-def handle_text(message):
-    tg_analytic.statistics(message.chat.id, message.text)
-    if message.text == 'команда а':
-        text = 'Использована команда а'
-        bot.send_message(message.chat.id, text, reply_markup=user_markup)
-
-    if message.text == 'команда б':
-        s1 = 'Использована команда б'
-        tg_analytic.statistics(message.chat.id, message.text)
-        bot.send_message(message.chat.id, s1, reply_markup=user_markup)
-    if message.text == 'команда в':
-        s1 = 'Использована команда в'
-        tg_analytic.statistics(message.chat.id, message.text)
-        bot.send_message(message.chat.id, s1, reply_markup=user_markup)
-    if message.text[:10] == 'статистика' or message.text[:10] == 'Cтатистика':
-        st = message.text.split(' ')
-        if 'txt' in st or 'тхт' in st:
-            tg_analytic.analysis(st, message.chat.id)
-            with open('%s.txt' % message.chat.id, 'r', encoding='UTF-8') as file:
-                bot.send_document(message.chat.id, file)
-            tg_analytic.remove(message.chat.id)
-        else:
-            messages = tg_analytic.analysis(st, message.chat.id)
-            bot.send_message(message.chat.id, messages)
 
 
 bot.polling()
