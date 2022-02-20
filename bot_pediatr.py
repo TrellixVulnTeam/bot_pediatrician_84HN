@@ -324,6 +324,7 @@ def message(message):
             'Хлорфилипт',
             'Фероны'
         ]])
+        bot.send_message(message.chat.id, 'Выберите жалобу ниже или вернитесь на главное меню (/start)', reply_markup=keyboardgostart)
     elif message.text == 'Муколитики':
         bot.send_message(message.chat.id, '''
 Лекарства, которые не следует давать малышам:
