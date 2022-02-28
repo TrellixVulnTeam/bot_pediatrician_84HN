@@ -1,1 +1,1 @@
-worker: python bot_pediatr.py
+web: python bot_pediatr.py
